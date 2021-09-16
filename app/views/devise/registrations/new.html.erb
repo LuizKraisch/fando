@@ -1,39 +1,62 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+<div class="div-info">
+  <div class="shadow p-4 mb-3 div-home">
+    </p>
+    <p><i class="fad fa-check fa-3x"></i></p>
+    <h2><b>Boas-vindas ao Fando.</b></h2>
+    <h6 class="form-text text-muted">Seu organizador de tarefas prático e rápido.</h6>
+    </p>
+    <h6 class="text-muted font-weight-light">O Fando foi criado para permitir que você consiga organizar seu dia de forma simples e prática. <br><br>Crie cards para suas tarefas, defina prioridades e tenha uma rotina mais organizada!</h6>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  <div class="shadow p-4 mb-2 div-home">
+    </p>
+    <p><i class="fad fa-question fa-3x"></i></p>
+    <h2><b>Sobre o Fando</b></h2>
+    <h6 class="form-text text-muted">Nós viemos em paz. 👽</h6>
+    </p>
+    <p><h6 class="text-muted font-weight-light">O Fando foi criado como projeto da disciplina de PAC para o Centro Universitário Católica de Santa Catarina.</h6></p>
+    <h6>2020 | Desenvolvido por <a href="http://www.pudim.com.br/">Luiz Kraisch</a></h6>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+</div>
+<div>
+  <div class="shadow p-4 mb-3 div-home">
+    </p>
+    <p><i class="fad fa-user-edit fa-3x"></i></p> 
+    <h2><b>Cadastre-se</b></h2>
+    <h6 class="form-text text-muted">Comece a organizar o seu dia agora mesmo!</h6>
+    <br>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="form-row">
+        <div class="col">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        </div>
+        <div class="col">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+        </div>
+      </div>
+      <br> 
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <small class="form-text text-muted">Não enviamos spams.</small>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "Cadastrar" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+</div>
 
 <%= render "devise/shared/links" %>
