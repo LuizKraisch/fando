@@ -1,0 +1,124 @@
+<br>
+<div class="div-info">
+  <div class="shadow p-4 mb-3 div-home div-dark-mode">
+    </p>
+    <p><i class="fad fa-check fa-3x"></i></p>
+    <% content_for :title, "Suas Tarefas | Fando" %>
+    <h2><b>Olá, <%= current_user.first_name + ' ' + current_user.last_name %></b></h2>
+    <h6 class="form-text text-muted">Boas-vindas a sua lista de tarefas.</h6>
+    <br>
+    <div class="div-header">
+      <h5><b>Opções de conta<b></h5>
+      <a id="btn-open-user"><i class="fas fa-angle-down fa-2x angle-user"></i></a>
+    </div>
+    <div class="user-opt" id="user-opt">
+      <br>
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="color-switch">
+        <label class="custom-control-label font-weight-normal" for="color-switch">Modo Escuro</label>
+      </div>
+      <hr>
+      <div class="text-center">
+        <div class="form-row text-center">
+          <div class="col">
+            <%= button_to "Editar perfil", edit_user_registration_path, method: :get %>
+          </div>
+          <div class="col">
+            <%= button_to "Sair", destroy_user_session_path, method: :delete %>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $('#btn-open-user').on('click', function() {
+          $('#user-opt').slideToggle('fast');
+          $(".angle-user").toggleClass('flip');
+        });
+      </script>
+    </div>	
+  </div>
+  <div class="shadow p-4 mb-2 div-home div-dark-mode">
+    </p>
+    <h3><b>Painel de Controle</b></h3>
+    <h6 class="form-text text-muted">Gerencie suas tarefas.</h6>
+    <%= button_to "Criar tarefa", new_task_path, method: :get %>
+    <div class="form-row text-center">
+      <div class="col">
+        <%= button_to "Lixeira", trash_can_tasks_path, method: :get %>
+        <%# <button class="btn-first btn-dark-first" type="submit"><i class="fad fa-trash"></i> &nbspLixeira</button> %>
+      </div>
+      <div class="col">
+        <form action="taskDeleteAll.php">
+          <button class="btn-second btn-dark-second" type="submit"><i class="fad fa-exclamation-circle"></i> &nbspExcluir todas</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<% if @tasks.empty? %>
+  <div class='shadow p-4 mb-2 div-home div-dark-mode'>
+    </p>
+    <%= image_tag "without_tasks.png", height: 250, alt: 'Nenhuma tarefa criada' %>
+    <br><br>
+    <h4><b>Você não possui nenhuma tarefa criada. </b></h4>
+    <h6 class='form-text text-muted'>Use as opções ao lado para criar ou filtrar tarefas.</h6>
+  </div>
+<% else %>
+  <% @tasks.map do |task| %>
+    <div class="shadow p-4 mb-3 div-home div-tasks div-dark-mode">
+      <p>
+        <div class="div-header">
+          <i class="fad fa-<%= task.icon %> fa-2x"></i>
+          <a class="btn-open-task"><i class="fas fa-angle-down fa-2x angle-task"></i></a>
+        </div>
+      </p>
+      <% if task.is_important %>
+        <div class='div-header'>
+          <div class='task-important'></div>
+        </div>
+      <% end %>
+      <div class="div-opts-task" id="div-opts-task">
+      <br>
+      <h6 class="text-muted font-weight-light">Criada em <%= task.created_at.strftime("%d/%m/%Y - %I:%M%p") %> </h6>
+        <div class="form-row text-center">
+          <div class="col">
+            <form method="POST" action="taskEdit.php?id=<?php echo $task_id ?>">
+              <button class="btn-first btn-dark-first" type="submit"><i class="fad fa-edit"></i> &nbspEditar</button>
+            </form>
+          </div>
+          <div class="col">
+            <button class="btn-third btn-dark-third" type="button" data-toggle="modal" data-target="#taskModal<%= task.id %>"><i class="fad fa-eye"></i> &nbspExpandir</button>
+          </div>
+          <div class="col">
+            <button class="btn-second btn-dark-second" type="button" data-toggle="modal" data-target="#deleteTaskModal<%= task.id %>"><i class="fad fa-trash"></i> &nbspExcluir</button>
+          </div>
+        </div>
+        <hr>
+      </div>
+      </p>
+      <h4><b><%= task.title %></b></h4>
+      <p>
+        <h6 class="text-muted font-weight-normal"><b>Em</b> <%= task.start_date.strftime("%d/%m/%Y - %I:%M%p") %> <b>até</b> <%= task.finish_date.strftime("%d/%m/%Y - %I:%M%p") %> </h6>
+      </p>
+      <%= render partial: "task", locals: { task: task } %>
+      <%= render partial: "delete_task", locals: { id: task.id } %>
+    </div>
+  <% end %>
+<% end %>
+<script type="text/javascript">
+  $('.btn-open-task').on('click', function(){
+    var $this = $(this);
+    $this.closest('.div-tasks').find('.div-opts-task').slideToggle('fast')
+    $this.find(".angle-task").toggleClass('flip');
+  });
+
+  $('#color-switch').on('click', function() {
+    $(".div-dark-mode").toggleClass('dark-mode');
+    $(".btn-dark-first").toggleClass('dark-first');
+    $(".btn-dark-second").toggleClass('dark-second');
+    $(".btn-dark-third").toggleClass('dark-third');
+    $(".btn-create-task").toggleClass('dark-create-task');
+    $("hr").toggleClass('dark-hr');
+    $(".modal-content").toggleClass('dark-modal');
+    $(".modal-textarea").toggleClass('dark-modal-textarea');
+  });
+</script>

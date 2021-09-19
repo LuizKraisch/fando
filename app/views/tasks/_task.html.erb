@@ -1,0 +1,22 @@
+<div class="modal fade" id="taskModal<%= task.id %>" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h4 class="modal-title"><b>Informações da tarefa<b></h4>
+        <h6 class="form-text"><b>Tarefa #<%= task.id %></b> - <%= task.title %></h6>
+        <h6 class="text-muted font-weight-normal">Criada em <%= task.created_at.strftime("%d/%m/%Y - %I:%M%p") %></h6>
+        <br>
+        <h6><b>Descrição</b></h6>
+        <h6 class="text-muted font-weight-normal"><%= task.description %></h6>
+        <br>
+        <h6><b>Inicia em</b></h6>
+        <h6 class="text-muted font-weight-normal"><%= task.start_date.strftime("%d/%m/%Y - %I:%M%p") %></h6>
+        <br>
+        <h6><b>Termina em</b></h6>
+        <h6 class="text-muted font-weight-normal"><%= task.finish_date.strftime("%d/%m/%Y - %I:%M%p") %></h6>
+        <hr>
+        <button type="button" class="btn-third btn-dark-third modal-button" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

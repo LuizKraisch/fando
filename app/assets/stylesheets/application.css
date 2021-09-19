@@ -1,20 +1,4 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
- ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0px;
 }
 
@@ -23,7 +7,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: url("https://i.pinimg.com/originals/6c/4a/b1/6c4ab1e78d3cd8e31e6725cd3808dd7f.jpg");
+  /* background-image: url("https://i.pinimg.com/originals/6c/4a/b1/6c4ab1e78d3cd8e31e6725cd3808dd7f.jpg"); */
 }
 
 .div-home {
@@ -50,36 +34,42 @@ body {
   color: #818181;
 }
 
-@media screen and (min-width: 728px) {
+@media screen and (min-width: 1275px) {
   body {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: center;
-      align-content: stretch;
-      align-items: flex-start;
-      margin: 0px 100px 0px 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: flex-start;
+    margin: 0px 100px 0px 100px;
   }
 
   .div-home {
-      max-width: 600px;
+    max-width: 600px;
   }
 
   .div-info {
-      position: sticky;
-      top: 0;
+    position: sticky;
+    top: 0;
+    width: 500px;
   }
   
   .div-tasks {
-      width: 600px;
+    width: 600px;
   }
 
   .btn-create-task {
-      width: 405px;
+    width: 405px;
+  }
+
+  .trash-can-task {
+    width: 600px;
   }
 }
 
-input {
+input, textarea, select {
+  transition: 0.3s;
   width: 100%;
   padding: 12px 20px;
   margin: 3px 0;
@@ -95,6 +85,21 @@ button {
   color: #FFF;
   border: 1px solid #FFF;
   border-radius: 5px;
+}
+
+input[type=button], input[type=submit] {
+  transition: 0.3s;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  color: #FFF;
+  background-color: #262626;
+  border-radius: 5px;
+}
+
+input[type=button]:hover, input[type=submit]:hover {
+  transition: 0.3s;
+  background-color: #000;
 }
 
 .task-important {
@@ -150,7 +155,7 @@ button {
   color: #FFF;
 }
 
-input:hover {
+input:hover, textarea:hover {
   transition: all ease-in-out .15s;
   border: 1px solid black;
 }
@@ -190,6 +195,19 @@ input:hover {
 .modal-textarea {
   width: 100%;
   border: 0;
+}
+
+.trash-can-task {
+  transition: 0.3s;
+  margin: 25px 0px 25px 0px;
+  border: 2px solid #d9d9d9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.trash-can-task:hover {
+  transition: 0.3s;
+  background-color: #d9d9d9;
 }
 
 /* -- DARK MODE --*/

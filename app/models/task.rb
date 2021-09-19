@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   acts_as_paranoid
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
 
   validates :title, :description, presence: true
   validates_length_of :title, maximum: 255

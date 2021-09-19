@@ -1,0 +1,35 @@
+<div class="flex-column m-5">
+  <% content_for :title, "Lixeira | Fando" %>
+  <p><i class="fad fa-trash fa-3x"></i></p> 
+  <h2><b>Lixeira</b></h2>
+  <h6 class="form-text text-muted">Essas são as tarefas que você excluiu recentemente.</h6>
+  <% @tasks.map do |task| %>
+    <div class="trash-can-task">
+      <div class="div-header">
+        <i class="fad fa-<%= task.icon %> fa-2x"></i>
+        <div class="form-row text-center">
+          <div class="col">
+            <%= button_to "Restaurar", restore_task_path(id: task.id), method: :get %>
+          </div>
+          <div class="col">
+            <%= button_to "Excluir", really_destroy_task_path(id: task.id), method: :get %>
+          </div>
+        </div>
+      </div>
+      <% if task.is_important %>
+        <br>
+        <div class='div-header'>
+          <div class='task-important'></div>
+        </div>
+      <% end %>
+      </p>
+      <h4><b><%= task.title %></b></h4>
+      <p>
+        <h6 class="text-muted font-weight-normal"><b>Em</b> <%= task.start_date.strftime("%d/%m/%Y - %I:%M%p") %> <b>até</b> <%= task.finish_date.strftime("%d/%m/%Y - %I:%M%p") %> </h6>
+      </p>
+    </div>
+  <% end %>
+  <div class="text-center">
+    <%= button_to "Voltar", tasks_path, method: :get %>
+  </div>
+</div>

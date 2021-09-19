@@ -1,0 +1,42 @@
+<div class="flex-column m-5">
+  <% content_for :title, "Criar tarefa | Fando" %>
+  <p><i class="fad fa-tasks fa-3x"></i></p>
+  <h2><b>Criar tarefa</b></h2>
+  <h6 class="form-text text-muted">Preencha os dados abaixo para criar a tarefa.</h6>
+  <br>
+  <%= form_with model: @task do |f| %>
+    <div class="form-group">
+      <b><%= f.label "Título da tarefa" %></b>
+      <%= f.text_field :title, placeholder: "Insira o título da tarefa" %>
+    </div>
+    <div class="form-group">
+      <b><%= f.label "Descrição da tarefa (opcional)" %></b></br>
+      <%= f.text_area :description, class: 'textarea', autofocus: true, placeholder: "Insira a descrição da tarefa", rows: 2, maxlength: "250", required: true %>
+    </div>
+    <div class="form-row">
+      <div class="col">
+        <b><%= f.label "Inicia em" %></b>
+        <%= f.datetime_local_field :start_date %>
+      </div>
+      <div class="col">
+        <b><%= f.label "Inicia em" %></b>
+        <%= f.datetime_local_field :finish_date %>
+      </div>
+    </div>
+    <br>
+    <div class="form-row">
+      <div class="col">
+        <b><%= f.label "É importante?" %></b><br>
+        <%= f.select :is_important, raw("<option value='0'>Selecione</option><option value='1'>Sim</option><option value='0'>Não</option>"), required: true %>
+      </div>
+      <div class="col">
+        <b><%= f.label "Ícone" %></b><br>
+        <%= f.select :icon, raw("<option value='tasks'>Nenhuma</option><option value='exclamation-triangle'>Alerta</option><option value='apple-alt'>Alimentação</option><option value='sun'>Dia-a-dia</option><option value='graduation-cap'>Estudos</option><option value='user-friends'>Encontro</option><option value='football-ball'>Esporte</option><option value='spa'>Lazer</option><option value='bell'>Lembrete</option><option value='briefcase'>Trabalho</option>"), required: true %>
+      </div>
+    </div>
+    <button type="submit" class="btn-exit">Criar</button>
+  <% end %>
+  <div class="text-center">
+    <%= button_to "Voltar", tasks_path, method: :get %>
+  </div>
+</div>
