@@ -15,15 +15,16 @@
           <i class="fad fa-<%= task.icon %> fa-3x"></i>
           <div class="form-row text-center">
             <div class="col">
-              <%= button_to "Restaurar", restore_task_path(id: task.id), method: :patch %>
+              <%= button_to restore_task_path(id: task.id), method: :patch, class: "btn-first" do %>
+                <i class='fad fa-trash-undo'></i>
+              <% end %>
             </div>
             <div class="col">
-              <button class="btn-third btn-dark-third" type="button" data-toggle="modal" data-target="#reallyDestroyTaskModal<%= task.id %>"><i class="fad fa-trash"></i></button>
+              <button class="btn-second" type="button" data-toggle="modal" data-target="#reallyDestroyTaskModal<%= task.id %>"><i class="fad fa-trash"></i></button>
             </div>
           </div>
         </div>
         <% if task.is_important %>
-          <br>
           <div class='div-header'>
             <div class='task-important'></div>
           </div>
@@ -38,6 +39,6 @@
     <% end %>
   <% end %>
   <div class="text-center">
-    <%= button_to "Voltar", tasks_path, method: :get %>
+    <%= button_to "Voltar", tasks_path, method: :get, class: "buto" %>
   </div>
 </div>

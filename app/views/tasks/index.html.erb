@@ -12,11 +12,12 @@
       <a id="btn-open-user"><i class="fas fa-angle-down fa-2x angle-user"></i></a>
     </div>
     <div class="user-opt" id="user-opt">
-      <hr>
-      <div class="text-center">
+      <div class="text-center mt-3">
         <div class="form-row text-center">
           <div class="col">
-            <%= button_to "Editar perfil", edit_user_registration_path, method: :get %>
+            <%= button_to edit_user_registration_path, method: :get, class: "btn-first" do %>
+              <i class='fad fa-user-edit'></i> &nbspEditar perfil
+            <% end %>
           </div>
           <div class="col">
             <button type="button" class="btn-third btn-dark-third" data-toggle="modal" data-target="#logoutModal"><i class="fad fa-sign-out"></i> &nbspSair</button>
@@ -35,16 +36,20 @@
     </p>
     <h3><b>Painel de Controle</b></h3>
     <h6 class="form-text text-muted">Gerencie suas tarefas.</h6>
-    <%= button_to "Criar tarefa", new_task_path, method: :get %>
+    <%= button_to new_task_path, method: :get, class: "btn-third" do %>
+      <i class='fad fa-check'></i> &nbspCriar tarefa
+    <% end %>
     <div class="form-row text-center">
       <div class="col">
-        <%= button_to "Lixeira", trash_can_tasks_path, method: :get %>
+        <%= button_to trash_can_tasks_path, method: :get, class: "btn-first" do %>
+          <i class='fad fa-recycle'></i> &nbspLixeira
+        <% end %>
       </div>
       <div class="col">
         <% if @tasks.empty? %>
-          <button type="button" class="btn-third btn-dark-third" style="opacity: 0.5; pointer-events: none;" disabled><i class="fad fa-trash"></i> &nbspExcluir todas</button>
+          <button type="button" class="btn-second" style="opacity: 0.5; pointer-events: none;" disabled><i class="fad fa-trash"></i> &nbspExcluir todas</button>
         <% else %>
-          <button type="button" class="btn-third btn-dark-third" data-toggle="modal" data-target="#reallyDestroyAllTasksModal"><i class="fad fa-trash"></i> &nbspExcluir todas</button>
+          <button type="button" class="btn-second" data-toggle="modal" data-target="#reallyDestroyAllTasksModal"><i class="fad fa-trash"></i> &nbspExcluir todas</button>
         <% end %>
       </div>
     </div>
@@ -77,13 +82,15 @@
       <h6 class="text-muted font-weight-light">Criada em <%= task.created_at&.strftime("%d/%m/%Y - %I:%M%p") %> </h6>
         <div class="form-row text-center">
           <div class="col">
-            <%= button_to "Editar", edit_task_path(id: task.id), method: :get %>
+            <%= button_to edit_task_path(id: task.id), method: :get, class: "btn-first" do %>
+              <i class='fad fa-pencil'></i> &nbspEditar
+            <% end %>
           </div>
           <div class="col">
-            <button class="btn-third btn-dark-third" type="button" data-toggle="modal" data-target="#taskModal<%= task.id %>"><i class="fad fa-eye"></i> &nbspExpandir</button>
+            <button class="btn-third" type="button" data-toggle="modal" data-target="#taskModal<%= task.id %>"><i class="fad fa-eye"></i> &nbspExpandir</button>
           </div>
           <div class="col">
-            <button class="btn-second btn-dark-second" type="button" data-toggle="modal" data-target="#deleteTaskModal<%= task.id %>"><i class="fad fa-trash"></i> &nbspExcluir</button>
+            <button class="btn-second" type="button" data-toggle="modal" data-target="#deleteTaskModal<%= task.id %>"><i class="fad fa-trash"></i> &nbspExcluir</button>
           </div>
         </div>
         <hr>

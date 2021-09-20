@@ -86,17 +86,19 @@ button {
   border-radius: 5px;
 }
 
-input[type=button], input[type=submit] {
+.buto {
+  width: 100px;
   transition: 0.3s;
-  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   color: #FFF;
   background-color: #262626;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
 }
 
-input[type=button]:hover, input[type=submit]:hover {
+.buto:hover  {
   transition: 0.3s;
   background-color: #000;
 }
@@ -109,24 +111,23 @@ input[type=button]:hover, input[type=submit]:hover {
 }
 
 .btn-first {
-  background-color: #FFF;
+  background-color: #318fb5;
   border: 2px solid;
-  border-color: #318fb5;
-  color: #318fb5;
+  color: #FFF;
+  transition: 0.3s;
 }
 
 .btn-second {
-  background-color: rgb(253, 253, 253);
+  background-color: #ec524b;
   border: 2px solid;
-  border-color: #ec524b;
-  color: #ec524b;
+  color: #FFF;
+  transition: 0.3s;
 }
 
 .btn-third {
-  background-color: rgb(253, 253, 253);
+  background-color: #383838;
   border: 2px solid;
-  border-color: #383838;
-  color: #383838;
+  color: #FFF;
 }
 
 .btn-exit-modal {
@@ -160,20 +161,20 @@ input:hover, textarea:hover {
 }
 
 .btn-first:hover {
-  transition: all ease-in-out .20s;
-  background-color: #318fb5;
+  transition: 0.3s;
+  background-color: #236883;
   color: #FFF;
 }
 
 .btn-second:hover {
-  transition: all ease-in-out .20s;
-  background-color: #ec524b;
+  transition: 0.3s;
+  background-color: #b43f39;
   color: #FFF;
 }
 
 .btn-third:hover {
-  transition: all ease-in-out .20s;
-  background-color: #383838;
+  transition: 0.3s;
+  background-color: #000;
   color: #FFF;
 }
 
@@ -202,11 +203,6 @@ input:hover, textarea:hover {
   border: 2px solid #d9d9d9;
   padding: 20px;
   border-radius: 10px;
-}
-
-.trash-can-task:hover {
-  transition: 0.3s;
-  background-color: #d9d9d9;
 }
 
 .empty-trash {
