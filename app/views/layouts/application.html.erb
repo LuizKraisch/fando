@@ -20,34 +20,23 @@
   </head>
 
   <body>
-    <% if notice %>
-      <div class="alert alert-success alert-dismissible fade show" style="position: absolute;">
-        <%= notice %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    <% end %>
-    <% if alert %>
-      <div class="alert alert-danger alert-dismissible fade show" style="position: absolute;">
-        <%= alert %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    <% end %>
+    <div style="width: 100%; height: 100%; display: flex; position: absolute; justify-content: flex-end; align-items: flex-end; pointer-events: none;">
+      <% if notice %>
+        <div id="alert" class="alert alert-success alert-dismissible fade show" style="position: absolute; z-index: 999; margin: 20px;">
+          <i class="fas fa-check">&nbsp&nbsp</i><%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div id="alert" class="alert alert-danger alert-dismissible fade show" style="position: absolute; z-index: 999; margin: 20px;">
+          <i class="fas fa-times">&nbsp&nbsp</i><%= alert %>
+        </div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
   <script type="text/javascript">
-    if (localStorage.getItem('dark-mode') == true) {
-      $(".div-dark-mode").toggleClass('dark-mode');
-      $(".btn-dark-first").toggleClass('dark-first');
-      $(".btn-dark-second").toggleClass('dark-second');
-      $(".btn-dark-third").toggleClass('dark-third');
-      $(".btn-create-task").toggleClass('dark-create-task');
-      $("hr").toggleClass('dark-hr');
-      $(".modal-content").toggleClass('dark-modal');
-      $(".modal-textarea").toggleClass('dark-modal-textarea');
-    }
+    $("#alert").fadeTo(2000, 500).slideUp(500, function(){
+        $("#alert").slideUp(500);
+    });
   </script>
 </html>

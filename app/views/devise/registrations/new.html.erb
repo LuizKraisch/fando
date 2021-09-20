@@ -28,33 +28,34 @@
     <h2><b>Vamos começar</b></h2>
     <h6 class="form-text text-muted">Comece a organizar o seu dia agora mesmo!</h6>
     <br>
+    <%= render "devise/shared/error_messages", resource: resource %>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="form-row">
         <div class="col">
           <b><%= f.label "Nome" %></b>
-          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "Insira seu nome" %>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "Insira seu nome", required: true %>
         </div>
         <div class="col">
           <b><%= f.label "Sobrenome" %></b>
-          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "Insira seu sobrenome" %>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "Insira seu sobrenome", required: true %>
         </div>
       </div>
       <br> 
       <div class="form-group">
         <b><%= f.label "E-mail" %></b>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Insira seu e-mail" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Insira seu e-mail", required: true %>
         <small class="form-text text-muted">Não enviamos spams.</small>
       </div>
       <div class="form-group">
         <b><%= f.label "Senha" %></b>
         <% if @minimum_password_length %>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Insira sua senha" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Insira sua senha", required: true %>
         <small class="form-text text-muted">Mínimo de 6 caracteres.</small>
       </div>
       <div class="form-group">
         <b><%= f.label "Confirme sua senha" %></b>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirme sua senha" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirme sua senha", required: true %>
       </div>
       <div class="text-center">
         <%= f.submit "Cadastrar" %>

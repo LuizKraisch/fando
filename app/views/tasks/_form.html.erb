@@ -1,0 +1,34 @@
+<%= form_with model: @task do |f| %>
+  <div class="form-group">
+    <b><%= f.label "Título da tarefa" %></b>
+    <%= f.text_field :title, placeholder: "Insira o título da tarefa", required: true %>
+  </div>
+  <div class="form-group">
+    <b><%= f.label "Descrição da tarefa (opcional)" %></b></br>
+    <%= f.text_area :description, class: 'textarea', autofocus: true, placeholder: "Insira a descrição da tarefa", rows: 2, maxlength: "250", required: true %>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <b><%= f.label "Inicia em" %></b>
+      <%= f.datetime_local_field :start_date, required: true  %>
+    </div>
+    <div class="col">
+      <b><%= f.label "Termina em" %></b>
+      <%= f.datetime_local_field :finish_date, required: true  %>
+    </div>
+  </div>
+  <br>
+  <div class="form-row">
+    <div class="col">
+      <b><%= f.label "É importante?" %></b><br>
+      <%= f.select :is_important, options_for_select([['Não', false], ['Sim', true]], @task.is_important), required: true %>
+    </div>
+    <div class="col">
+      <b><%= f.label "Ícone" %></b><br>
+      <%= f.select :icon, options_for_select([['Nenhuma', 'tasks'], ['Alerta', 'exclamation-triangle'], ['Alimentação', 'apple-alt'], ['Dia-a-dia', 'sun'], ['Estudos', 'graduation-cap'], ['Encontro', 'user-friends'], ['Lazer', 'spa'], ['Lembrete', 'bell'], ['Trabalho', 'briefcase']], @task.icon), required: true %>
+
+    </div>
+  </div>
+  <br>
+  <button type="submit" class="btn-exit">Criar</button>
+<% end %>

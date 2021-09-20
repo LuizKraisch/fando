@@ -9,17 +9,17 @@
     <div class="form-row">
       <div class="col">
         <b><%= f.label "Nome" %></b>
-        <%= f.text_field :first_name, autocomplete: "first_name" %>
+        <%= f.text_field :first_name, autocomplete: "first_name", required: true %>
       </div>
       <div class="col">
         <b><%= f.label "Sobrenome" %></b>
-        <%= f.text_field :last_name, autocomplete: "last_name" %>
+        <%= f.text_field :last_name, autocomplete: "last_name", required: true %>
       </div>
     </div>
     <br>
     <div class="form-group">
       <b><%= f.label "E-mail" %></b>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
     </div>
     <div class="form-group">
       <div class="field">
@@ -39,19 +39,20 @@
     <div class="form-group">
       <div class="field">
         <b><%= f.label "Senha atual" %></b>
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", required: true %>
         <small class="form-text text-muted">Precisamos da sua senha atual para confirmar as alterações.</small>
       </div>
     </div>
     <br>
     <button type="submit" class="btn-exit">Salvar</button>
   <% end %>
-  <%=link_to "Voltar", :back %>
+  <%= button_to "Voltar", tasks_path, method: :get %>
   <hr>
   <br>
   <p><i class="fad fa-trash fa-2x"></i></p>
   <h3><b>Apagar Conta</b></h3>
   <h6 class="form-text text-muted">Se preferir, você pode encerrar sua conta e apagar todos os seus dados.</h6>
-  <p><%= button_to "Apagar conta", registration_path(resource_name), class: 'btn-alert', data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <button type="button" class="btn-alert" data-toggle="modal" data-target="#excludeAccountModal">Apagar conta</button>
   <br><br>
 </div>
+<%= render partial: "exclude_account" %>

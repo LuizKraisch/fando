@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:edit, :destroy, :restore, :really_destroy]
+  before_action :set_task, only: [:edit, :update, :destroy, :restore, :really_destroy]
 
   def index
     @tasks = Task.where(user_id: current_user.id)
@@ -46,20 +46,20 @@ class TasksController < ApplicationController
     if @task.restore
       redirect_to trash_can_tasks_path, notice: "Tarefa restaurada com sucesso."
     else
-      redirect_to tasks_path, alert: "Ocorreu um erro ao resturar a tarefa. Por favor, tente novamente."
+      redirect_to trash_can_tasks_path, alert: "Ocorreu um erro ao resturar a tarefa. Por favor, tente novamente."
     end
   end
 
   def really_destroy
     if @task.really_destroy!
-      redirect_to tasks_path, notice: "Tarefa excluída com sucesso."
+      redirect_to trash_can_tasks_path, notice: "Tarefa excluída com sucesso."
     else
-      redirect_to tasks_path, alert: "Ocorreu um erro ao excluir a tarefa. Por favor, tente novamente."
+      redirect_to trash_can_tasks_path, alert: "Ocorreu um erro ao excluir a tarefa. Por favor, tente novamente."
     end
   end
 
   def destroy_all
-    if Task.where(user_id: current_user.id).really_destroy
+    if destroy_all_tasks
       redirect_to tasks_path, notice: "Todas as tarefas foram excluídas."
     else
       redirect_to tasks_path, alert: "Ocorreu um erro ao excluir todas as tarefas. Por favor, tente novamente."
@@ -78,5 +78,11 @@ class TasksController < ApplicationController
 
   def update_params
     params.require(:task).permit(:title, :description, :start_date, :finish_date, :is_important, :icon)
+  end
+
+  def destroy_all_tasks
+    Task.where(user_id: current_user.id).each do |task|
+      task.really_destroy!
+    end
   end
 end

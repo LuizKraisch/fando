@@ -82,7 +82,6 @@ button {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  color: #FFF;
   border: 1px solid #FFF;
   border-radius: 5px;
 }
@@ -208,6 +207,18 @@ input:hover, textarea:hover {
 .trash-can-task:hover {
   transition: 0.3s;
   background-color: #d9d9d9;
+}
+
+.empty-trash {
+  margin: 60px;
+  text-align: center;
+}
+
+.error-explanation {
+  background-color: #e7e7e7;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  padding: 15px;
 }
 
 /* -- DARK MODE --*/

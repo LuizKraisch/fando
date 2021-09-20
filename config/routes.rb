@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   resources :tasks do
     collection do
       get :trash_can
-      get :destroy_all
+      delete :destroy_all
     end
 
     member do
-      get :restore
-      get :really_destroy
+      patch :restore
+      delete :really_destroy
     end
   end
 
