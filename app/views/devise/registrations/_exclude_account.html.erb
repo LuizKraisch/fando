@@ -3,14 +3,12 @@
     <div class="modal-content">
       <div class="modal-body text-center">
         <br><br>
-        <p><i class="fad fa-door-open fa-4x"></i></p> 
+        <p><i class="fad fa-user-times fa-4x"></i></p> 
         <h4><b>Deseja mesmo apagar a sua conta?</b></h4>
         <h6 class="form-text text-muted">Essa ação não pode ser desfeita e suas tarefas serão excluídas.</h6>
-        <div class="form-row text-center">
-          <div class="col">
-            <button type="button" class="btn-third btn-dark-third modal-button" data-dismiss="modal">Não</button>
-            <%= button_to "Sim", registration_path(resource_name), class: 'btn-alert', method: :delete %>
-          </div>
+        <div class="col">
+          <%= button_to "Sim", registration_path(resource_name), class: 'btn-alert', method: :delete, class: 'btn-third' %>
+          <button type="button" class="btn-fourth" data-dismiss="modal">Não</button>
         </div>
       </div>
     </div>

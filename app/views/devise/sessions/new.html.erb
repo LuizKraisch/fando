@@ -1,6 +1,7 @@
 
 <div class="shadow p-4 mb-3 div-home flex-column">
   <br>
+  <% content_for :background, "background-image: url(#{get_background_image});" %>
   <% content_for :title, "Login | Fando" %>
   <p><i class="fad fa-user-edit fa-3x"></i></p>
   <h2><b>Faça seu login</b></h2>
@@ -17,10 +18,10 @@
       <small class="form-text text-muted">Suas informações estão seguras conosco.</small>
     </div>
     <div class="text-center">
-      <%= f.submit "Continuar" %>
+      <%= f.submit "Continuar", class: 'btn-third' %>
     </div>
   <% end %>
   <div class="text-center">
-    <%= button_to "Voltar", new_user_registration_path, method: :get %>
+    <%= button_to "Voltar", new_user_registration_path, method: :get, class: 'btn-fourth' %>
   </div>
 </div>

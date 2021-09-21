@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   add_flash_types :info, :error, :warning
 
+  def get_background_image
+    num = Random.new.rand(1..6)
+    return "/assets/background#{num}.jpg"
+  end
+
+  helper_method :get_background_image
+
   protected
 
   def configure_permitted_parameters

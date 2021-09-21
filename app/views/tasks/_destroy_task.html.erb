@@ -6,9 +6,9 @@
         <p><i class="fad fa-trash fa-4x"></i></p> 
         <h4><b>Deseja mesmo mover esta tarefa para a lixeira?</b></h4>
         <h6 class="form-text text-muted">Você pode recuperar a tarefa pela lixeira.</h6>
-        <div class="flex-row">
-          <button type="button" class="btn-third btn-dark-third modal-button" data-dismiss="modal">Não</button>
-          <%= button_to "Sim", task_path(id: id), method: :delete %>
+        <div class="col mt-3">
+          <%= button_to "Sim", task_path(id: id), method: :delete, class: 'btn-third' %>
+          <button type="button" class="btn-fourth" data-dismiss="modal">Não</button>
         </div>
       </div>
     </div>

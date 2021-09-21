@@ -1,8 +1,8 @@
-<br>
 <div class="div-info">
   <div class="shadow p-4 mb-3 div-home div-dark-mode">
     </p>
     <p><i class="fad fa-check fa-3x"></i></p>
+    <% content_for :background, "background-image: url(#{get_background_image});" %>
     <% content_for :title, "Suas Tarefas | Fando" %>
     <h2><b>Olá, <%= current_user.first_name + ' ' + current_user.last_name %></b></h2>
     <h6 class="form-text text-muted">Boas-vindas a sua lista de tarefas.</h6>
@@ -42,14 +42,14 @@
     <div class="form-row text-center">
       <div class="col">
         <%= button_to trash_can_tasks_path, method: :get, class: "btn-first" do %>
-          <i class='fad fa-recycle'></i> &nbspLixeira
+          <i class='fad fa-trash'></i> &nbspLixeira
         <% end %>
       </div>
       <div class="col">
         <% if @tasks.empty? %>
-          <button type="button" class="btn-second" style="opacity: 0.5; pointer-events: none;" disabled><i class="fad fa-trash"></i> &nbspExcluir todas</button>
+          <button type="button" class="btn-second" style="opacity: 0.5; pointer-events: none;" disabled><i class="fad fa-recycle"></i> &nbspExcluir todas</button>
         <% else %>
-          <button type="button" class="btn-second" data-toggle="modal" data-target="#reallyDestroyAllTasksModal"><i class="fad fa-trash"></i> &nbspExcluir todas</button>
+          <button type="button" class="btn-second" data-toggle="modal" data-target="#reallyDestroyAllTasksModal"><i class="fad fa-recycle"></i> &nbspExcluir todas</button>
         <% end %>
       </div>
     </div>

@@ -19,7 +19,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="<%= yield(:background) %>">
     <div style="width: 100%; height: 100%; display: flex; position: absolute; justify-content: flex-end; align-items: flex-end; pointer-events: none;">
       <% if notice %>
         <div id="alert" class="alert alert-success alert-dismissible fade show" style="position: absolute; z-index: 999; margin: 20px;">

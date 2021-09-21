@@ -1,4 +1,5 @@
 <div class="div-info">
+  <% content_for :background, "background-image: url(#{get_background_image});" %>
   <% content_for :title, "Fando - Organize seu dia de forma prática" %>
   <div class="shadow p-4 mb-3 div-home">
     <p><i class="fad fa-check fa-3x"></i></p>
@@ -20,7 +21,7 @@
     <h2><b>Já tem conta?</b></h2>
     <h6 class="form-text text-muted">Entre na sua conta e veja as tarefas.</h6>
     <div class="text-center mt-4">
-      <%= button_to "Entrar", new_user_session_path %>
+      <%= button_to "Entrar", new_user_session_path, class: 'btn-third' %>
     </div>
   </div>
   <div class="shadow p-4 mb-3 div-home">
@@ -58,7 +59,7 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirme sua senha", required: true %>
       </div>
       <div class="text-center">
-        <%= f.submit "Cadastrar" %>
+        <%= f.submit "Cadastrar", class: 'btn-third' %>
       </div>
     <% end %>
   </div>

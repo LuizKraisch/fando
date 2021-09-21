@@ -44,15 +44,15 @@
       </div>
     </div>
     <br>
-    <button type="submit" class="btn-exit">Salvar</button>
+    <button type="submit" class="btn-third">Salvar</button>
   <% end %>
-  <%= button_to "Voltar", tasks_path, method: :get %>
+  <%= button_to "Voltar", tasks_path, method: :get, class: 'btn-fourth' %>
   <hr>
   <br>
-  <p><i class="fad fa-trash fa-2x"></i></p>
+  <p><i class="fad fa-user-times fa-2x"></i></p>
   <h3><b>Apagar Conta</b></h3>
   <h6 class="form-text text-muted">Se preferir, você pode encerrar sua conta e apagar todos os seus dados.</h6>
-  <button type="button" class="btn-alert" data-toggle="modal" data-target="#excludeAccountModal">Apagar conta</button>
+  <button type="button" class="btn-second mt-3" style="width: 200px" data-toggle="modal" data-target="#excludeAccountModal">Apagar conta</button>
   <br><br>
 </div>
 <%= render partial: "exclude_account" %>

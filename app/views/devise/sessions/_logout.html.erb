@@ -6,11 +6,9 @@
         <p><i class="fad fa-door-open fa-4x"></i></p> 
         <h4><b>Deseja mesmo sair?</b></h4>
         <h6 class="form-text text-muted">Fica, vai ter bolo...</h6>
-        <div class="form-row text-center">
-          <div class="col">
-            <button type="button" class="btn-third btn-dark-third modal-button" data-dismiss="modal">Não</button>
-            <%= button_to "Sair", destroy_user_session_path, method: :delete %>
-          </div>
+        <div class="col mt-3">
+          <%= button_to "Sair", destroy_user_session_path, method: :delete, class: 'btn-third' %>
+          <button type="button" class="btn-fourth" data-dismiss="modal">Não</button>
         </div>
       </div>
     </div>
