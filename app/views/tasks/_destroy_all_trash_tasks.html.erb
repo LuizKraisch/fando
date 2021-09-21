@@ -1,0 +1,16 @@
+<div class="modal fade" id="destroyAllTrashTasksModal" tabindex="-1" role="dialog" aria-labelledby="destroyAllTrashTasksModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <br><br>
+        <p><i class="fad fa-recycle fa-4x"></i></p> 
+        <h4><b>Deseja mesmo esvaziar a sua lixeira?</b></h4>
+        <h6 class="form-text text-muted">As tarefas não poderão mais ser recuperadas.</h6>
+        <div class="col mt-3">
+          <%= button_to "Sim", destroy_all_trash_tasks_path, method: :delete, class: 'btn-third' %>
+          <button type="button" class="btn-fourth" data-dismiss="modal">Não</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

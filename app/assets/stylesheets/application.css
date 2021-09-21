@@ -5,7 +5,6 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-size: cover;
-  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
@@ -143,7 +142,7 @@ button {
   color: #FFF;
 }
 
-input[type=text]:hover, input[type=datetime-local]:hover, textarea:hover {
+input[type=text]:hover, input[type=datetime-local]:hover, input[type=password]:hover, input[type=email]:hover, textarea:hover {
   transition: all ease-in-out .15s;
   border: 1px solid black;
 }

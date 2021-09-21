@@ -38,7 +38,13 @@
       <%= render partial: "really_destroy_task", locals: { id: task.id } %>
     <% end %>
   <% end %>
+  <% if @tasks.empty? %>
+    <button type="button" class="btn-second" style="opacity: 0.5; pointer-events: none;" disabled><i class="fad fa-recycle"></i> &nbspEsvaziar lixeira</button>
+  <% else %>
+    <button type="button" class="btn-second" data-toggle="modal" data-target="#destroyAllTrashTasksModal"><i class="fad fa-recycle"></i> &nbspEsvaziar lixeira</button>
+  <% end %>
   <div class="text-center">
     <%= button_to "Voltar", tasks_path, method: :get, class: "btn-fourth" %>
   </div>
 </div>
+<%= render partial: "destroy_all_trash_tasks" %>

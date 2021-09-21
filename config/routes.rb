@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   resources :tasks do
     collection do
-      get :trash_can
+      get :trash
       delete :destroy_all
+      delete :destroy_all_trash
     end
 
     member do
