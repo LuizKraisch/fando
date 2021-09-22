@@ -27,15 +27,6 @@ ActiveRecord::Schema.define(version: 2021_09_15_223756) do
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
-  create_table "user_tasks", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "task_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["task_id"], name: "index_user_tasks_on_task_id"
-    t.index ["user_id"], name: "index_user_tasks_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -54,6 +45,4 @@ ActiveRecord::Schema.define(version: 2021_09_15_223756) do
   end
 
   add_foreign_key "tasks", "users"
-  add_foreign_key "user_tasks", "tasks"
-  add_foreign_key "user_tasks", "users"
 end
