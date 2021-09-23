@@ -1,6 +1,6 @@
 # Fando
 
-Fando é um sistema de gerenciamento simples de tarefas para o dia-a-dia. Você pode criar tarefas, definir sua importância, informações sobre elas, adicionar um icone personalizado e gerencia-las de forma fácil.
+Fando é um sistema de gerenciamento de tarefas para o dia-a-dia. Você pode criar tarefas, definir sua importância, informações sobre elas, adicionar um icone personalizado e gerencia-las de forma fácil.
 
 # Funcionamento
 
