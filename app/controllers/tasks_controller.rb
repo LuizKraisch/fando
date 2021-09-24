@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy, :restore, :really_destroy]
 
   def index
-    @tasks = Task.where(user_id: current_user.id)
+    @tasks = Task.where(user_id: current_user.id).order(:start_date)
   end
 
   def new
@@ -12,10 +12,15 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(create_params)
     @task.user_id = current_user.id
-    if @task.save
-      redirect_to tasks_path, notice: "Tarefa criada com sucesso."
+    invalid_date = verify_date(@task)
+    if invalid_date
+      redirect_to new_task_path, alert: "Não é possível criar uma tarefa com a mesma data e horário."
     else
-      redirect_to tasks_path, alert: "Ocorreu um erro ao criar a tarefa. Por favor, tente novamente."
+      if @task.save
+        redirect_to tasks_path, notice: "Tarefa criada com sucesso."
+      else
+        redirect_to tasks_path, alert: "Ocorreu um erro ao criar a tarefa. Por favor, tente novamente."
+      end
     end
   end
 
@@ -39,7 +44,7 @@ class TasksController < ApplicationController
   end
 
   def trash
-    @tasks = Task.only_deleted.where(user_id: current_user.id)
+    @tasks = Task.only_deleted.where(user_id: current_user.id).order(:start_date)
   end
 
   def restore
@@ -78,6 +83,10 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.with_deleted.find(params[:id])
+  end
+
+  def verify_date(task)
+    return true if task.start_date == task.finish_date
   end
 
   def create_params
