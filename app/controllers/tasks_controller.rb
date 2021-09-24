@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
     invalid_date = verify_date(@task)
     if invalid_date
-      redirect_to new_task_path, alert: "Não é possível criar uma tarefa com a mesma data e horário."
+      redirect_to new_task_path, alert: "Não é possível criar uma tarefa com a mesma data e horário de início e termino."
     else
       if @task.save
         redirect_to tasks_path, notice: "Tarefa criada com sucesso."
